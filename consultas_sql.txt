@@ -1,0 +1,24 @@
+EJECUTAR EN MYSQL
+ESTAS SON CONSULTAS QUE SI FUNCIONAN EN LA BD
+// Saco la relacion de Alumno con Usuario
+select	* from silab.alumnos inner join silab.users on silab.alumnos.id_usuario = silab.users.id
+
+
+//Me traego solo [ semestre,carrera, numero control de la tabla alumno] y [nombre solo de la tabla usuario]
+select	silab.alumnos.semestre, silab.alumnos.carrera, silab.alumnos.numero_control, silab.users.name from silab.alumnos inner join silab.users on silab.alumnos.id_usuario = silab.users.i
+
+
+
+
+//Consulta para mostrar ArticulosLaboratorio y unir Articulos Mayores, Y sacar el laboratorio al que pertenece.
+select silab.articulo_mayor_laboratorios.id as 'Articulo Laboratorio' , silab.articulo_mayors.nombre , silab.articulo_mayors.descripcion_articulo, silab.articulo_mayors.numero_serie, silab.articulo_mayors.status, silab.laboratorios.nombre as 'Laboratorio'
+from silab.articulo_mayor_laboratorios 
+inner join silab.articulo_mayors on silab.articulo_mayor_laboratorios.id_articulo_mayor = silab.articulo_mayors.id
+inner join silab.laboratorios on silab.laboratorios.id = silab.articulo_mayor_laboratorios.id_laboratorio
+
+
+
+
+//Esta consulta la use para cambiar el nombre de una columna de la tabla laboratorio
+    use silab;
+    ALTER TABLE laboratorios RENAME COLUMN nombre TO nombre_laboratorio;

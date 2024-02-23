@@ -1,0 +1,116 @@
+Link de iconos:
+https://fontawesome.com/v4/icons/
+https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Installation
+
+
+2. Comandos:
+    Instalar apliacion:
+        1-composer install
+        2-copy .env.example .env (Si no viene el .env.example hay que crear el archivo manualmente)
+        3-php artisan key:generate
+        4-npm install
+        5- composer update (opcional)
+
+    Crear controlador:
+        php artisan make:controller recursosHumanosController
+
+    Verificar version Laravel:
+        php artisan --version
+    Instalar apliacion:
+        0- Verificar el archivo php.ini y borrar las comillas del 'fileinfo'
+        1-composer install
+        2-copy .env.example .env
+        3-php artisan key:generate
+        4-npm install
+ Modulos
+        Monica: reportes
+        Daniela: Inventarios
+        Lupita: Opciones
+        Freddy: Liberacion
+        Sebas: Prestamos
+Para usar CSS:
+<link href="{{ asset('css/tramite-layout.css') }}" rel="stylesheet"> la carpeta css hace referencia a la que esta en public
+
+Comando para ver las listas de rutas:
+    php artisan route:list
+
+Para error de base de datos:
+    php artisan config:cache
+Si tenemos error al no actualizar datos de AdminLTE
+    php artisan config:clear
+
+Documentacion para componentes:
+    https://www.larashout.com/using-laravel-blade-components-and-slots
+
+AUTENTICACION DE USUARIOS:
+    Para poder hacer uso de la AUTENTICACION de usuarios es necesario instalar el paquete
+    "ui" que nos permitira tener vistas y otras cosas para la autenticacion de usuarios.
+
+    comandos:
+        1-composer require laravel/ui*
+        2-php artisan ui bootstrap (Aqui no se incluyen vistas por defecto para el registro etc)
+            php artisan ui vue
+            php artisan ui react
+        2.1-php artisan ui bootstrap --auth (aqui se incluyen las vistas con el parametro adicional)
+            php artisan ui vue --auth
+            php artisan ui react --auth
+        3-npm i
+        4-npm run dev
+    *Configuramos el .env con los datos de la base de datos
+    *Creamos una base de datos en MYSQL workbench
+    *Ejecutamos php artisan migrate
+
+
+PERMISOS EN Laravel
+    vamos a instalar el siguiente paquete que nos ayudara a crear permisos y roles:
+    composer requiere spatie/laravel-permission
+        en caso de error : composer require spatie/laravel-permission:*
+        https://spatie.be/docs/laravel-permission/v5/installation-laravel
+
+AGREGAR DATOS CON FAKER:
+
+    *Hay que crear los factorys y seeders
+            php artisan make:factory UsuarioFactory --model=usuario
+            php artisan make:seeder UsersTableSeeder
+
+    *Dentro del factory rellenamos los datos segun los datos de nuestra tabla(tabla ala que hace referencia nuestro modelo)
+    *Dentro del seed "DatabaseSeeder" encontraremos las funciones que se ejecutaran (seran los otros seeders)
+    *Para ejecutar sera con -> php artisan db:seed
+
+SEEDERS DE PERMISOS:
+    Para ejecutar los seeder y se creen los roles y permisos ejecutar el siguiente comando:
+        php artisan migrate:refresh --seed
+
+    NOTA: dentro de la base de datos en la tabla model_has_role ... Es necesario agregar manualmente el [id del rol,App/User, id del usuario ] esto para crear manualmente los permisos
+Pendientes:
+
+hay que crear nuevas migraciones pero con el nombre:
+    create_alumnos_table , etc hay que seguir la sintaxis para no tener problemas.
+
+Crear controlado con opciones CRUD:
+    php artisan make:controller LiberacionController --resource
+
+
+
+
+    128.0.0/register
+
+    1-Alumno
+    2- Docente
+    3-Liberacion
+        php artisan migrate:refresh --seed
+
+
+
+
+
+
+
+    01 junio
+
+    Para resetear migraciones: php artisan migrate:refresh --seed
+    Luego en la aplicacion creamos usuarios
+    Tambien hay que crear los laboratorios.
+    En la base de datos, en la tabla model_has_role, Le asignamos roles alos usuarios
+
+    --Falta crear una interfaz que ayude a hacerlo (crear ususarios y su rol determinado) , o en todo caso un seeeder o algo parecido.

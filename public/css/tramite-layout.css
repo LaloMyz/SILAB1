@@ -1,0 +1,9 @@
+.titulo-head{
+    color: rgb(0, 89, 255);
+    font-family: 'Oswald', sans-serif;
+}
+.titulo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

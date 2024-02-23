@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-image: url('tec_log.jpg');
+    
+    background-color: #0dbd33;
+
+}
+/*------- LOGIN  ---------*/
+.login{
+    width: 100%;
+    height: 100%;
+}
